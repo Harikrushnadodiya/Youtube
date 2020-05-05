@@ -1,0 +1,24 @@
+from numpy import *
+from scipy import *
+from scipy . optimize import minimize
+# Function to minimize
+def myfunction (p):
+    x,y,z = p
+    return x*(x*y- sqrt (z))
+# Constraints , rewrite as >=0
+def c1(p):
+    x,y,z = p
+    return -(x+2*y -6*z)
+def c2(p):
+    x,y,z = p
+    return -(x-y)+8
+def c3(p):
+    x,y,z = p
+    return (x*y*z) -100
+
+cons = [ {'type': 'ineq', 'fun':c1},{'type': 'ineq', 'fun':c2},{'type': 'ineq', 'fun':c3 }]
+
+bounds = (( -10 , 12) , (-inf , +inf), (-inf , +inf))
+# Minimize
+results = minimize( myfunction,(1, 1, 1),bounds = bounds, constraints = cons)
+print ( results )
