@@ -1,0 +1,21 @@
+import numpy as np
+from matplotlib import pyplot as plt
+from math import pi
+
+#input data
+d = float(input("Diameter of Orifice (mm): "))
+h = float(input("Height of tank (mm): "))
+
+#area clc
+a=(pi/4)*d**2 #mm2
+print ("Area of orifice:",a,"mm2")
+
+#mass flow rate clc
+x=np.linspace(0,h,200)
+Q=(0.61*a)*((2*9810*x)**(1/2))
+
+#for ploting results
+plt.xlabel("Q volume flow rate (m3/s)") 
+plt.ylabel("Height (m)")
+plt.plot(Q,x,label="Flow over time ")
+plt.legend()
