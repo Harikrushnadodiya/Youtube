@@ -1,0 +1,24 @@
+from matplotlib.pyplot import *
+from numpy import *
+import numpy as np
+import matplotlib as plt
+import pandas as pd
+
+#intial data
+t=0.1
+c=1
+xc=np.linspace(0,1,100)
+
+#calculation
+y1=(5*t*c)*((0.2969*sqrt(xc/c))-(0.1260*xc/c)-(0.3516*(xc/c)**2)+(0.2843*(xc/c)**3)-(0.1015*(xc/c)**4))
+y2=-y1
+
+#plot results
+plot(xc*c,y1,xc*c,y2)
+
+
+#export to csv
+dict = {'X-cordinate': xc*c, 'Y-cordinate': y1, 'X-cordinate-1': xc*c, 'Y-cordinate-2': y2 }
+df = pd.DataFrame(dict) 
+# saving the dataframe 
+df.to_csv(r'C:\Users\91955\Desktop\export_dataframe.csv') 
